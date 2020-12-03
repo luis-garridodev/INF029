@@ -6,7 +6,7 @@ int fatorial(int nf){
 	int conta=1;
 	
 	
-	if(nf<=-1){
+	if(nf<=0){
 	    
 		return -1;
 	}	

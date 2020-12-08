@@ -1,48 +1,51 @@
-	#include<stdio.h>
-	#include<stdlib.h>
+#include<stdio.h>
+#include<stdlib.h>
 
-		char lertresLetras() {
-		
-		//char string[3][50];
-		
-		int i,j;
-		
-		for(i=0;i<3;i++){
-			for(j=0;j<3;j++){
-					
-					printf("digite tres letras:\n ") ;
-					scanf("%s",string[i][j]);
-				
-				
-				}
-			}
-		
-
-		
-		return string;
-		
-		   
-	}
-
-	int main(){
+void lertresLetras(char string[][50]) {
+	
+	//char string[3][50];
+	
+	int i,j;
+	
+	for(i=0;i<2;i++){
+		for(j=0;j<2;j++){
 			
-			int i,j;
-		   char **string[3][50];
-		   
-			string= lertresLetras();
+			printf("digite tres letras:\n ") ;
 			
-			for(i=0;i<3;i++){
-				
-				for(j=0;j<3;j++){
-					
-					printf("frases da string: %c\n",string[i][j]);
-				
-				
-				}
-			}
+			fflush(stdin);
+			scanf("%s",&string[i][j]);
+			
+			
+		}
 	}
+	
+	
+	
+	
+	
+	
+}
 
-	  
+int main(){
+	
+	int i,j;
+	char string[2][50];
+	
+	lertresLetras(string);
+	
+	for(i=0;i<2;i++){
+		
+		for(j=0;j<2;j++){
+			
+			printf("frases da string: %s\n",string[i][j]);
+			
+			
+		}
+	}
+}
 
-			  
+
+
+
+
 

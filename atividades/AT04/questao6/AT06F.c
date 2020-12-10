@@ -1,29 +1,23 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void lertresLetras(char string[]) {
-	char letra1;
-	char letra2;
-	char letra3;
-	int i;
-	printf("digite tres letras:\n ") ;
-	fflush(stdin);
-	scanf("%s", &letra1) ;
+void lertresLetras(char string[3]) {
 	
-	string[0]=letra1;
-	printf("digite tres letras:\n ") ;
+	printf("digite a primeira letra:\n ") ;
+	scanf("%c", &string[0]) ;
+	getchar();
 	fflush(stdin);
-	scanf("%s", &letra2) ;
-	string[1]=letra2;
-	printf("digite tres letras:\n ") ;
+	
+	printf("digite a segunda letra:\n ") ;
+	scanf("%c", &string[1]) ;
+	getchar();
 	fflush(stdin);
-	scanf("%s",&letra3) ;
-	string[2]=letra3;
-	for(i=0;i<3;i++){
-		printf("letras da string:%c\n",string[i]);
-		
-		
-	}
+	
+	printf("digite a terceira letra:\n ") ;
+	scanf("%c", &string[2]) ;
+	getchar();
+	fflush(stdin);
+	
 }
 
 int main(){
@@ -34,6 +28,7 @@ int main(){
 	
 	
 }
+
 
 
 

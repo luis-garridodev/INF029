@@ -58,92 +58,90 @@ void leitordecadastro(cadastro n);
 
 /*================ INICIO DE PROCEDIMENTOS =================*/
 
-void listaraluno( cadastro n , cadasProf p,materia m ){
+void listaraluno(){
+	cadastro n;
+	int i;
+	int x;
 	
-	int menu;
-	int i,x;
-	do{
-		printf("digite a opcao desejada de cadastro:\n para cadastro de alunos digite 1:\n para cadastro de professores digite 2:\n para cadastro de materia digite 3:\n");
-		scanf("%d",&menu);
-		
-		switch(menu){
-			case 1:
-			printf("digite o numero de matricula:\n");
-			scanf("%d",&n.matricula);
-			for(i=0;i<30;i++){
-				printf("digite o nome do aluno:\n");
-				scanf("%s",n.nome);
-				
-				
-				
-				
-			}
-			printf("digite m para homem ou f para mulher:\n");
-			scanf(" %c ",&n.sexo);
-			
-			for(x=0;x<10;x++){
-				printf("digite data de nascimento do aluno:\n");
-				scanf("%d",n.datadenascimento);
-				
-				
-				
-				
-			}
-			printf("digite o seu cpf\n:");
-			scanf("%d",&n.cpf);
-			
-			
-			case 2:
-			printf("digite o numero de matricula:\n");
-			scanf("%d",&p.matricula);
-			for(i=0;i<30;i++){
-				printf("digite o nome do professor:\n");
-				scanf("%s",p.nome);
-				
-				
-				
-				
-			}
-			printf("digite m para homem ou f para mulher:\n");
-			scanf(" %c ",&p.sexo);
-			
-			for(x=0;x<10;x++){
-				printf("digite data de nascimento do professor:\n");
-				scanf("%d",p.datadenascimento);
-				
-				
-				
-				
-			}
-			printf("digite o seu cpf\n:");
-			scanf("%d",&p.cpf);
-			case 3:{
-				printf("digite o nome da materia:\n");
-				scanf("%s",m.nome);
-				
-				printf("digite o codigo:\n");
-				scanf("%d",&m.codigo);
-				
-				printf("digite o semestre:\n");
-				scanf("%d",&m.semestre);
-				
-				printf("digite o professor:\n");
-				scanf("%s ",m.professor);
-				
-				break;
-				
-				
-			}
-			
-			
-		}
+	
+	
+	printf("digite o numero de matricula:\n");
+	scanf("%d",&n.matricula);
+	for(i=0;i<30;i++){
+		printf("digite o nome do aluno:\n");
+		scanf("%s",n.nome);
 		
 		
 		
-	}while(x == -1);
+		
+	}
+	printf("digite m para homem ou f para mulher:\n");
+	scanf(" %c ",&n.sexo);
+	
+	for(x=0;x<10;x++){
+		printf("digite data de nascimento do aluno:\n");
+		scanf("%d",n.datadenascimento);
+		
+		
+		
+		
+	}
+	printf("digite o seu cpf\n:");
+	scanf("%d",&n.cpf);
+	
+	
+	
 	
 }
-
+void listarprofessor(){
+	cadasProf p;
+	int i;
+	int x;
+	printf("digite o numero de matricula:\n");
+	scanf("%d",&p.matricula);
+	for(i=0;i<30;i++){
+		printf("digite o nome do professor:\n");
+		scanf("%s",p.nome);
+		
+		
+		
+		
+	}
+	printf("digite m para homem ou f para mulher:\n");
+	scanf(" %c ",&p.sexo);
+	
+	for(x=0;x<10;x++){
+		printf("digite data de nascimento do professor:\n");
+		scanf("%d",p.datadenascimento);
+		
+		
+		
+		
+	}
+	printf("digite o seu cpf\n:");
+	scanf("%d",&p.cpf);
+	
+	
+}
+void listarmateria(){
+	materia m;
+	printf("digite o nome da materia:\n");
+	scanf("%s",m.nome);
+	
+    printf("digite o codigo:\n");
+	scanf("%d",&m.codigo);
+    
+    printf("digite o semestre:\n");
+	scanf("%d",&m.semestre);
+    
+    printf("digite o professor:\n");
+	scanf("%s ",m.professor);
+	
+	
+	
+	
+	
+}
 
 
 
@@ -176,6 +174,7 @@ int main () {
 		printf("[1] -> Cadastro\n");
 		printf("[2] -> Listar\n");
 		printf("[3] -> Excluir\n");
+		printf("[-1] -> sair\n");
 		scanf("%d",&menu);
 		
 		switch(menu){
@@ -205,7 +204,11 @@ int main () {
 			case 2:{
 				
 			}
-			
+			case -1:{
+				
+				break;
+				
+			}
 			
 			
 			

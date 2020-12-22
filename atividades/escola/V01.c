@@ -5,34 +5,34 @@
 
 typedef struct aluno
 {
-
+	
 	int matricula;
 	char nome[30];
 	char sexo;
 	int datadenascimento[10];
 	int cpf;
-
+	
 } cadastro;
 
 typedef struct professor
 {
-
+	
 	int matricula;
 	char nome[30];
 	char sexo;
 	int datadenascimento[10];
 	int cpf;
-
+	
 } cadasProf;
 
 typedef struct disciplinas
 {
-
+	
 	char nome[30];
 	int codigo;
 	int semestre;
 	char professor[30];
-
+	
 } materia;
 
 /*================ FIM Struscts =================*/
@@ -59,7 +59,7 @@ void listarprofessor()
 	}
 	printf("digite m para homem ou f para mulher:\n");
 	scanf(" %c ", &p.sexo);
-
+	
 	for (x = 0; x < 10; x++)
 	{
 		printf("digite data de nascimento do professor:\n");
@@ -73,13 +73,13 @@ void listarmateria()
 	materia m;
 	printf("digite o nome da materia:\n");
 	scanf("%s", m.nome);
-
+	
 	printf("digite o codigo:\n");
 	scanf("%d", &m.codigo);
-
+	
 	printf("digite o semestre:\n");
 	scanf("%d", &m.semestre);
-
+	
 	printf("digite o professor:\n");
 	scanf("%s ", m.professor);
 }
@@ -87,48 +87,48 @@ void listarmateria()
 void cadastrarAluno()
 {
 	printf("Fazer o cadastro do aluno\n");
-  
+	
 	cadastro n;
-
-
+	
+	
 	printf("digite o numero de matricula:\n");
 	scanf("%d", &n.matricula);
-
-		printf("digite o nome do aluno:\n");
-		scanf("%s", n.nome);
+	
+	printf("digite o nome do aluno:\n");
+	scanf("%s", n.nome);
 	
 	
-
-
-		printf("digite data de nascimento do aluno:\n");
-		scanf("%d", n.datadenascimento);
+	
+	
+	printf("digite data de nascimento do aluno:\n");
+	scanf("%d", n.datadenascimento);
 	
 	printf("digite o seu cpf\n:");
 	scanf("%d", &n.cpf);
-
-printf("digite m para homem ou f para mulher:\n");
+	
+	printf("digite m para homem ou f para mulher:\n");
 	scanf("%c", &n.sexo);
-  
-   getchar();
-
-  fflush(stdin);
-  
-     
-
-
-
+	
+	getchar();
+	
+	fflush(stdin);
+	
+	
+	
+	
+	
 }
 
 void listarAlunos(cadastro n)
 {
-  
+	
 	printf("Fazer a listagem dos alunos\n");
-  printf("numero de matricula:%d\n", n.matricula);
+	printf("numero de matricula:%d\n", n.matricula);
     printf("nome do aluno:%s\n", n.nome);
-  printf("data de nascimento do aluno:%d\n",*n.datadenascimento);
-  printf("cpf do aluno:%d\n", n.cpf);
-  printf("sexo do aluno:%c\n", n.sexo);
-
+	printf("data de nascimento do aluno:%d\n",*n.datadenascimento);
+	printf("cpf do aluno:%d\n", n.cpf);
+	printf("sexo do aluno:%c\n", n.sexo);
+	
 }
 
 void excluirAluno()
@@ -140,7 +140,7 @@ void operacoesAluno()
 {cadastro imprime;
 	int menu;
 	printf("### Aluno ####\n");
-
+	
 	do
 	{
 		printf("Opcao deseja ?\n");
@@ -148,28 +148,28 @@ void operacoesAluno()
 		printf("[1] -> Cadastrar\n");
 		printf("[2] -> Listar\n");
 		printf("[3] -> Excluir\n");
-
+		
 		scanf("%d", &menu);
-
+		
 		switch (menu)
 		{
-		case 1:
-		{
-			cadastrarAluno();
-     
-			break;
-		}
-
-		case 2:
-		{
-			listarAlunos( imprime);
-			break;
-		}
-		case 3:
-		{
-			excluirAluno();
-			break;
-		}
+			case 1:
+			{
+				cadastrarAluno();
+				
+				break;
+			}
+			
+			case 2:
+			{
+				listarAlunos( imprime);
+				break;
+			}
+			case 3:
+			{
+				excluirAluno();
+				break;
+			}
 		}
 	} while (menu != 0);
 }
@@ -182,10 +182,10 @@ int main()
 	int menu;
 	materia a;
 	cadasProf d;
-  
-
+	
+	
 	//menu de interaco excluir, cadastra e listaraluno
-
+	
 	do
 	{
 		printf("Opcao deseja ?\n");
@@ -194,26 +194,26 @@ int main()
 		printf("[3] -> Disciplina\n");
 		printf("[-1] -> Sair\n");
 		scanf("%d", &menu);
-
+		
 		switch (menu)
 		{
-		case 1:
-		{
-			operacoesAluno();
-     
-      
-			break; //todo case precisa do break
-		}
-		case 2:
-		{
-			printf("opcoes de professor\n");
-			break;
-		}
-		case 3:
-		{
-			printf("opcoes de disciplina\n");
-			break;
-		}
+			case 1:
+			{
+				operacoesAluno();
+				
+				
+				break; //todo case precisa do break
+			}
+			case 2:
+			{
+				printf("opcoes de professor\n");
+				break;
+			}
+			case 3:
+			{
+				printf("opcoes de disciplina\n");
+				break;
+			}
 		}
 	} while (menu != -1);
 }

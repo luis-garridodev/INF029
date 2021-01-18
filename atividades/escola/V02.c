@@ -40,7 +40,7 @@ typedef struct disciplinas
 
 /*================ INICIO declaraco de funcao =================*/
 void leitordecadastro(Aluno n);
-
+void listarmateria();
 /*================ FIM declaracao de funcao =================*/
 
 /*================ INICIO DE PROCEDIMENTOS =================*/
@@ -48,21 +48,7 @@ void leitordecadastro(Aluno n);
 
 
 
-void listarmateria()
-{
-	materia m;
-	printf("digite o nome da materia:\n");
-	scanf("%s", m.nome);
-	
-	printf("digite o codigo:\n");
-	scanf("%d", &m.codigo);
-	
-	printf("digite o semestre:\n");
-	scanf("%d", &m.semestre);
-	
-	printf("digite o professor:\n");
-	scanf("%s ", m.professor);
-}
+
 
 void cadastrarAluno(Aluno listaAlunos[TAM], int *contAluno)
 {
@@ -299,7 +285,7 @@ void cadastromateria(materia listamateria[TAM], int *contmateria)
 
 
 }
-void listamateria(materia listamateria[TAM],int *contmateria){
+void listarmateria(materia listamateria[TAM],int *contmateria){
 
   printf("Lista da materia\n");
 	for(int i=0;i<*contmateria;i++){
@@ -312,7 +298,7 @@ void listamateria(materia listamateria[TAM],int *contmateria){
 
 }
 }
-void operacoesmateria(Aluno listamateria[TAM], int *contmateria)
+void operacoesmateria(materia listamateria[TAM], int *contmateria)
 {
 	int menu;
 	printf("### materia ####\n");

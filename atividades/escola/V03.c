@@ -36,6 +36,15 @@ typedef struct disciplinas
 	
 } materia;
 
+typedef struct novo
+{
+	int matricula;
+	char nome[31];
+	char sexo[2];
+	char datadenascimento[11];
+	int cpf; 
+}vazio;
+
 /*================ FIM Struscts =================*/
 
 /*================ INICIO declaraco de funcao =================*/
@@ -97,35 +106,50 @@ void listarAlunos(Aluno listaAlunos[TAM], int *contAluno)
 	
 }
 
-void excluirAluno()
-{
-	printf("Fazer a exclusÃƒÂ£o do aluno\n");
-}
-Aluno pesquisaraluno(Aluno listaAlunos[TAM] , int *contaluno,Aluno matricula){
-	int procura;
-	int sair = 1;
-	
-	
-    do
-    { 
-		printf("Numero da matricula que deseja procurar \n");
-		scanf("%d" ,&procura);
-		
-		for(int i=0; i<*contaluno; i++){
-			if(listaAlunos[i].matricula == procura)
-			printf(" Matricula Correta: \n %d \n" , listaAlunos[i].matricula);
-			
-			else{
-				printf(" Matricula Inexistente\n"); 
-				listaAlunos[i].matricula=1;
-				
-				
-			}  
+void excluirAluno(Aluno listaAlunos[TAM], int *contAluno){ 
+  	int matricula;
+  	int cont;
+	int pesquisa;
+	printf("Digite a matricula do aluno que deseja excluir\n");
+	listarAlunos(listaAlunos,contAluno);
+	scanf("%d" ,&matricula);
+	pesquisa = pesuisarAluno(matricula, contAluno, listaAlunos);
+
+	if (pesquisa >= 0){ //achou
+		for(cont = pesquisa; cont < *contAluno; cont++){
+		      listaAlunos[cont].matricula=listaAlunos[cont+1].matricula;
+		      strcpy(listaAlunos[cont].sexo,listaAlunos[cont+1].sexo);
+		      strcpy(listaAlunos[cont].datadenascimento,listaAlunos[cont+1].datadenascimento);
+		      strcpy(listaAlunos[cont].nome,listaAlunos[cont+1].nome);
+		      listaAlunos[cont].cpf= listaAlunos[cont+1].cpf;
 		}
-		printf(" Para Continuar: digite qualquer numero\n Sair: digite 0\n ");  
-		scanf("%d" , &sair);  
-	}while(sair!=0);
-    return matricula;
+		*contAluno = *contAluno - 1;
+		printf("Exclusão feita com sucesso \n");
+
+	}else{
+
+		printf("aluno nao encontrado")
+	}
+
+}
+
+
+int pesquisaraluno(int procura, int *contaluno , Aluno listaAlunos[]){
+	
+	
+    for(int i=0; i<*contaluno; i++){
+		if(listaAlunos[i].matricula == procura){
+			return i;
+		}
+		
+		else{
+		
+			//printf(" Matricula Inexistente\n"); 
+			
+			return -1;
+			
+		}  
+	}
 }
 
 void operacoesAluno(Aluno listaAlunos[TAM], int *contAluno)
@@ -168,7 +192,22 @@ void operacoesAluno(Aluno listaAlunos[TAM], int *contAluno)
 			}
 			case 4:
 			{
-				pesquisaraluno(listaAlunos,contAluno,matricula );
+				int pesquisa;
+				vazio Vazio;
+				int procura;
+				
+				printf("Numero da matricula que deseja procurar \n");
+				scanf("%d" ,&procura);
+				
+				pesquisa = pesquisaraluno(procura,contAluno , listaAlunos);
+				if (pesquisa >= 0){
+					printf(" Matricula: % d \n Nome : %s \n Dt de nascimento:%s \n" , listaAlunos[pesquisa].matricula , listaAlunos[pesquisa].nome , listaAlunos[pesquisa].datadenascimento);
+					printf("  Cpf: %d  \n Sexo : %s \n" ,listaAlunos[pesquisa].cpf,listaAlunos[pesquisa].sexo);
+				}
+				else{
+					printf(" Matricula: % d \n Nome : %s \n Dt de nascimento:%s \n" , Vazio.matricula = -1 , Vazio.nome , Vazio.datadenascimento);
+					printf("  Cpf: %d  \n Sexo : %s \n" ,Vazio.cpf = '\0',Vazio.sexo);
+				}
 				break;
 			}
 			default:
@@ -223,6 +262,101 @@ void listarprofessor(cadasProf listaprofessor[TAM],int *contprofessor){
 		
 	}
 }
+
+void validardata(cadasProf listaprofessor[TAM] , int *contprofessor){
+	int data[10];
+	int dia[2];
+	int mes[2];
+	int ano[4];
+	int somadia;
+	int somames;
+	int somaano;
+	int i;
+	somadia=dia[0]+dia[1];
+	
+	
+	for(i=0;i<10;i++){
+		printf("digite a data\n");
+		scanf("%d",&data[i]);
+		
+		
+		dia[0]=data[0]*10;
+		dia[1]=data[1];
+		somadia=data[0]+data[1];
+		mes[0]=data[2]*10;
+		mes[1]=data[3];
+		somames=data[2]+data[3];
+		ano[0]=data[4]*1000;
+		ano[1]=data[5]*100;
+		ano[2]=data[6]*10;
+		ano[3]=data[7];
+		somaano=ano[0]+ano[1]+ano[2]+ano[3];
+		if((somadia>31&&somames>12)||(somadia>28&&somames==02)){
+			
+			printf("data incorreta\n");
+			break;
+			
+		}
+		if((somadia>31&&somames==1)||(somadia>31&&somames==3)||(somadia>31&&somames==5)||(somadia>31&&somames==7)||(somadia>31&&somames==8)||(somadia>31&&somames==10)||(somames==12)){
+			printf("data incorreta\n");
+			break;
+		}
+		else if((somadia>30&&somames==4)||(somadia>30&&somames==6)||(somadia>30&&somames==9)||(somadia>30&&somames==11)){
+			printf("data incorreta\n");
+			break;
+			
+			
+		}
+		else{
+			printf("data correta\n");
+			switch(somames){
+				case 1:
+				printf("dia %d de janeiro de %d",somadia,somaano);
+				case 2:
+				printf("dia %d de fevereiro de %d",somadia,somaano);
+				case 3:
+				printf("dia %d de março de %d",somadia,somaano);
+				case 4:
+				printf("dia %d de abril de %d",somadia,somaano);
+				case 5:
+				printf("dia %d de maio de %d",somadia,somaano);
+				case 6:
+				printf("dia %d de junho de %d",somadia,somaano);
+				case 7:
+				printf("dia %d de julho de %d",somadia,somaano);
+				case 8:
+				printf("dia %d de agosto de %d",somadia,somaano);
+				case 9:
+				printf("dia %d de setembro de %d",somadia,somaano);
+				case 10:
+				printf("dia %d de outubro de %d",somadia,somaano);
+				case 11:
+				printf("dia %d de novembro de %d",somadia,somaano);
+				case 12:
+				printf("dia %d de dezembro de %d",somadia,somaano);
+				
+				
+				
+				
+				
+			}
+			
+			
+		}
+		break;
+		
+	}
+	
+	
+	
+	
+}
+
+
+
+
+
+
 void pesquisarmatricula(cadasProf listaprofessor[TAM] , int *contprofessor){
 	int procura;
 	int sair = 1;
